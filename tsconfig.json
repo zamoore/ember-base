@@ -37,33 +37,15 @@
     // like a safety check, though, so we leave it on.
     "noPropertyAccessFromIndexSignature": true,
 
-    // --- Compilation/integration settings
-    // Setting `noEmitOnError` here allows ember-cli-typescript to catch errors
-    // and inject them into Ember CLI's build error reporting, which provides
-    // nice feedback for when
-    "noEmitOnError": true,
-
-    // We use Babel for emitting runtime code, because it's very important that
-    // we always and only use the same transpiler for non-stable features, in
-    // particular decorators. If you were to change this to `true`, it could
-    // lead to accidentally generating code with `tsc` instead of Babel, and
-    // could thereby result in broken code at runtime.
+    // this is false until the ember-cli addresses this issue
+    // https://github.com/typed-ember/ember-cli-typescript/issues/1439
+    "noEmitOnError": false,
     "noEmit": true,
-
-    // Ember makes heavy use of decorators; TS does not support them at all
-    // without this flag.
     "experimentalDecorators": true,
-
-    // Support generation of source maps. Note: you must *also* enable source
-    // maps in your `ember-cli-babel` config and/or `babel.config.js`.
     "declaration": true,
     "declarationMap": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-
-    // The combination of `baseUrl` with `paths` allows Ember's classic package
-    // layout, which is not resolveable with the Node resolution algorithm, to
-    // work with TypeScript.
     "baseUrl": ".",
     "paths": {
       "ember-base/tests/*": [
